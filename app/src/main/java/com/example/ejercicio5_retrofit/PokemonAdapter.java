@@ -1,6 +1,7 @@
 package com.example.ejercicio5_retrofit;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,6 +59,12 @@ public class PokemonAdapter extends RecyclerView.Adapter<PokemonAdapter.ViewHold
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(holder.imageView);
 
+        holder.itemView.setOnClickListener(view -> {
+            Intent intent = new Intent(holder.itemView.getContext(), SecondActivity.class);
+            intent.putExtra("Pokemon", pokemonList.get(position));
+            holder.itemView.getContext().startActivity(intent);
+
+        });
     }
 
     @Override
